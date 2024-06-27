@@ -9,6 +9,9 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v4
+        with:
+            submodules: recursive
+            fetch-depth: 1   
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ matrix.rust-toolchain }}
