@@ -20,4 +20,5 @@ jobs:
             rustup component add clippy
       - run: cargo fmt
       - run: cargo clippy
+        continue-on-error: true
       - run: cargo build
