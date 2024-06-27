@@ -1,0 +1,20 @@
+[package]
+name = "hnswlib-sys"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dora Militaru <dora@kalneus.com>"]
+license = "MIT"
+description = "FFI bindings to hnswlib"
+repository = "https://github.com/doramatadora/hnswlib-sys"
+categories = ["vector-search", "ann"]
+links = "hnswlib"
+build = "src/build.rs"
+
+[profile.release]
+debug = 1
+
+[build-dependencies]
+bindgen = { version = "0.69.4", features = ["experimental"] }
+
+[dependencies]
+libc = "0.2"

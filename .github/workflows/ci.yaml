@@ -1,0 +1,20 @@
+on: push
+name: CI
+jobs:
+  test:
+    strategy:
+      matrix:
+        rust-toolchain: [stable]
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.rust-toolchain }}
+      - run: |
+            rustup component add rustfmt
+            rustup component add clippy
+      - run: cargo fmt
+      - run: cargo clippy
+      - run: cargo build
